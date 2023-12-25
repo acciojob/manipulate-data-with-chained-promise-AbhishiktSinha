@@ -4,20 +4,26 @@ const output = document.getElementById('output');
 
 new Promise (function (resolve, reject) {
 
+    let arr1;
 	setTimeout(()=> {
-		output.innerText = arr.filter((element)=> {
+		arr1 = arr.filter((element)=> {
             return (Math.floor(element % 2) === 0);
         })
-	}, 1000);
+        output.innerText = arr1;
+        resolve(arr1);
+	}, 1000);	
 
-	setTimeout(()=> {
-		output.textContent = arr.map((element)=> {
-			return element * 2;
-		});
-	},2000);
+})
+.then((intermediateArray)=> {
+    
+    console.log(intermediateArray);
+    let arr2;
+    setTimeout(()=> {
+        arr2 = intermediateArray.map((element)=> {
+            return (element * 2);
+        });
+        output.innerText = arr2;
+        return 'done';
+    }, 2000);
 
-	resolve('done');
-}).then((result)=> {
-	console.log(result);
-	
 })

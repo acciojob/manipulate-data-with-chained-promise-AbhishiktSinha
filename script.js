@@ -4,15 +4,13 @@ const output = document.getElementById('output');
 
 new Promise (function (resolve, reject) {
 
-	setTimeout((arr)=> {
-		arr.forEach((element)=> {
-			if(Math.floor(Number(element) % 2) === 0) {
-				output.innerText += element + ',';
-			}
-		})
+	setTimeout(()=> {
+		output.innerText = arr.filter((element)=> {
+            return (Math.floor(element % 2) === 0);
+        })
 	}, 1000);
 
-	setTimeout((arr)=> {
+	setTimeout(()=> {
 		output.textContent = arr.map((element)=> {
 			return element * 2;
 		});
@@ -21,4 +19,5 @@ new Promise (function (resolve, reject) {
 	resolve('done');
 }).then((result)=> {
 	console.log(result);
+	
 })
